@@ -1,0 +1,32 @@
+<div class="flex items-center justify-center gap-2 mt-6 pb-6">
+  <!-- Prev Button -->
+  <button
+    (click)="goToPage(currentPage - 1)"
+    [disabled]="!hasPrevious()"
+    class="px-3 py-1 rounded bg-blue-500 text-white disabled:bg-gray-300 disabled:cursor-not-allowed"
+  >
+    &laquo;
+  </button>
+
+  <!-- Page Number Buttons -->
+  <button
+    *ngFor="let page of pageNumbers"
+    (click)="goToPage(page)"
+    class="px-3 py-1 rounded"
+    [ngClass]="{
+      'bg-blue-600 text-white': page === currentPage,
+      'bg-gray-100 text-gray-800 hover:bg-gray-200': page !== currentPage
+    }"
+  >
+    {{ page + 1 }}
+  </button>
+
+  <!-- Next Button -->
+  <button
+    (click)="goToPage(currentPage + 1)"
+    [disabled]="!hasNext()"
+    class="px-3 py-1 rounded bg-blue-500 text-white disabled:bg-gray-300 disabled:cursor-not-allowed"
+  >
+    &raquo;
+  </button>
+</div>
